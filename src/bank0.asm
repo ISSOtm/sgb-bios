@@ -700,31 +700,31 @@ ResetIO = $0082B1
 	BNE :+++++    ; -+
 	LDY #1         ; |
 	LDA PPUSTATUS2 ; |
-	LDA GETXY      ; |
-	LDA YCOORD     ; |
-	CMP #$DF       ; |
-	BCS :++     ; -+ |
-	CMP #$DC     ; | |
+	LDA GETXY   ;    |
+	LDA YCOORD  ;    |
+	CMP #$DF    ;    |
+	BCS :++   ;   -+ |
+	CMP #$DC  ;    | |
 	BCC :++++ ; -+ | |
 	STY RunGDMA4;| | |
-               ; | | |
-:              ; | | |
+	           ; | | |
+:	           ; | | |
 	LDA IRQAck ; | | |
 	BEQ :-     ; | | |
 	STZ RunGDMA4;| | |
-	RTS        ; | | |
-               ; | | |
-:            ; <-|-+ |
+	RTS    ;     | | |
+	       ;     | | |
+:	       ;   <-|-+ |
 	BNE :++ ; -+ |   |
-:            ; | |   |
+:	        ;  | |   |
 	LDA IRQAck;| |   |
-	BEQ :-   ; | |   |
-:          ; <-+-+   |
-	LDA #1 << 4    ; |
-	STA COPYSTART  ; |
-	RTS            ; |
-                   ; |
-:                ; <-+
+	BEQ :- ;   | |   |
+:	       ; <-+-+   |
+	LDA #1 << 4   ;  |
+	STA COPYSTART ;  |
+	RTS           ;  |
+	             ;   |
+:	             ; <-+
 	LDA #1 << 4
 	STA COPYSTART
 	RTS
